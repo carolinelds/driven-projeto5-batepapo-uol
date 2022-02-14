@@ -50,8 +50,9 @@ main {
     margin-bottom: 80px;
 }
 
-.message {
-    background-color: white;
+.message,
+.status,
+.private_message {
     width: 100%;
     padding: 8px;
     font-size: 14px;
@@ -61,21 +62,24 @@ main {
     margin-bottom: 4px;
 }
 
+.message {
+    background-color: white;
+}
+
 .status {
     background-color: #DCDCDC;
 }
 
-.private {
+.private_message {
     background-color: #FFDEDE;
 }
 
-.message small {
+small {
     color: #AAAAAA;
 }
 
-.message strong {
+strong {
     font-weight: bold;
-
 }
 
 footer {

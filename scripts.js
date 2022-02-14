@@ -19,7 +19,10 @@ function usernameIsValid(success){
 
     setInterval(keepUserOn,5000);
 
+    getMessages();
+    
     setInterval(getMessages,3000);
+
 }
 
 function usernameIsInvalid(error){
@@ -56,5 +59,31 @@ function gotMessagesSuccesfully(success) {
     messagesLocation.innerHTML = "";
 
     const messagesData = success.data;
+        
+    messagesData.forEach(renderMessages);
+}
 
+function renderMessages(message) {
+
+    const messagesLocation = document.querySelector("main");
+
+    if (message.type === "status"){
+        messagesLocation.innerHTML += `
+            <div class="status">
+                <p><small>(${message.time})</small> <strong>${message.from}</strong> ${message.text}</p>
+            </div>
+            `;
+    } else if (message.type === "message"){
+        messagesLocation.innerHTML += `
+            <div class="message">
+                <p><small>(${message.time})</small> <strong>${message.from}</strong> para <strong>${message.to}</strong>: ${message.text}</p>
+            </div>
+            `;
+    } else {
+        messagesLocation.innerHTML += `
+            <div class="private_message">
+                <p><small>(${message.time})</small> <strong>${message.from}</strong> reservadamente para <strong>${message.to}</strong>: ${message.text}</p>
+            </div>
+            `;
+    }
 }
