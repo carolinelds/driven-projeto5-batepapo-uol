@@ -49,10 +49,10 @@ function getMessages() {
 
     const messages = axios.get("https://mock-api.driven.com.br/api/v4/uol/messages");
 
-    messages.then(gotMessagesSuccesfully);
+    messages.then(gotMessagesSuccessfully);
 }
 
-function gotMessagesSuccesfully(success) {
+function gotMessagesSuccessfully(success) {
 
     const messagesLocation = document.querySelector("main");
 
@@ -92,4 +92,36 @@ function renderMessages(message) {
 
     const lastMessage = document.querySelector("main > div:last-of-type");
     lastMessage.scrollIntoView();
+}
+
+function sendMessage() {
+
+    const input = document.querySelector("footer input");
+
+    const messageToSend = input.value;
+
+    const messageObject = {
+        from: username,
+        to: "Todos",
+        text: messageToSend,
+        type: "message"
+    };
+
+    const promise = axios.post("https://mock-api.driven.com.br/api/v4/uol/messages", messageObject);
+
+    promise.then(sendSuccess);
+    promise.catch(sendFail);
+}
+
+function sendSuccess() {
+    getMessages();
+    const input = document.querySelector("footer input");
+    input.value = "";
+}
+
+function sendFail() {
+    const input = document.querySelector("footer input");
+    if (input.value !== "") {
+        window.location.reload();
+    }
 }

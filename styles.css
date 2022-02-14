@@ -48,6 +48,7 @@ main {
     height: auto;
     padding-top: 26px;
     margin-bottom: 80px;
+    overflow-x: hidden;
 }
 
 .message,
@@ -120,6 +121,18 @@ input:placeholder-shown {
   
 ::-ms-input-placeholder { /* Microsoft Edge */
     color: black;
+}
+
+footer button {
+    background-color: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-style: none;
+}
+
+footer button:hover {
+    color:cornflowerblue;
 }
 
 footer ion-icon {
