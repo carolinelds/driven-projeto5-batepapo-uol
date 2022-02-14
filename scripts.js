@@ -20,7 +20,7 @@ function usernameIsValid(success){
     setInterval(keepUserOn,5000);
 
     getMessages();
-    
+
     setInterval(getMessages,3000);
 
 }
@@ -86,4 +86,7 @@ function renderMessages(message) {
             </div>
             `;
     }
+
+    const lastMessage = document.querySelector("main > div:last-of-type");
+    lastMessage.scrollIntoView();
 }
