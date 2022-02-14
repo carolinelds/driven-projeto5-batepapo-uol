@@ -125,3 +125,10 @@ function sendFail() {
         window.location.reload();
     }
 }
+
+document.addEventListener("keypress", function (e) {
+    if (e.key === 'Enter') {
+        const button = document.querySelector("#send-button");
+        button.click();
+    }
+});
